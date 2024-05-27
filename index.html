@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ManimReveal</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/black.css">
+    <link rel="stylesheet" href="plugin/highlight/monokai.css">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h3>Latency and Heterogeneity in Data</h3>
+          <h4>...and what to do about it</h4>
+          <h6>Bijan Mazaheri</h6>
+        </section>
+        <section>
+          <h3>Causality</h3>
+          <ul>
+            <li class="fragment">
+              What to do?
+            </li>
+            <li class="fragment">
+              What to blame?
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3>Show direction of arrow talk about why</h3>
+        </section>
+        <section>
+          <h3>The Age of Big Data</h3>
+          <img class="r-stretch" src="/images/XKCD_ML.png" >
+        </section>
+        <section>
+          <h3>An Example</h3>
+          <img class="r-stretch" src="/images/2021CO2Peak_Temps_en_title_lg.jpg" >
+        </section>
+        <section class="fv-background" fv-video="animations/videos/GlobalWarming.mp4" fv-playback-info="animations/videos/GlobalWarming.json"></section>
+        <section class="fv-background" fv-video="animations/videos/GlobalWarmingDAG.mp4" fv-playback-info="animations/videos/GlobalWarmingDAG.json"></section>
+        <section class="fv-background" fv-video="animations/videos/FundamentalProblem.mp4" fv-playback-info="animations/videos/FundamentalProblem.json"></section>
+
+        <section class="fv-background" fv-video="animations/videos/CausalityTable.mp4" fv-playback-info="animations/videos/CausalityTable.json"></section>
+        <section class="fv-background" fv-video="animations/videos/UnobservedConfounding.mp4" fv-playback-info="animations/videos/UnobservedConfounding.json"></section>
+        <section class="fv-background" fv-video="animations/videos/WhatIsIdentifiability.mp4" fv-playback-info="animations/videos/WhatIsIdentifiability.json"></section>
+        <section>
+          <h3>Motivating Theory: Past Work</h3>
+        </section>
+        <section class="fv-background" fv-video="animations/videos/Bumps.mp4" fv-playback-info="animations/videos/Bumps.json"></section>
+        <section class="fv-background" fv-video="animations/videos/ICoins.mp4" fv-playback-info="animations/videos/ICoins.json"></section>
+        <section class="fv-background" fv-video="animations/videos/IdentifiabilityReduction.mp4" fv-playback-info="animations/videos/IdentifiabilityReduction.json"></section>
+        <section class="fv-background" fv-video="animations/videos/WhatIsSampleComplexity.mp4" fv-playback-info="animations/videos/WhatIsSampleComplexity.json"></section>
+        <section class="fv-background" fv-video="animations/videos/EmergenceOfConfounding.mp4" fv-playback-info="animations/videos/EmergenceOfConfounding.json"></section>
+        <section>
+          <section id="fragments">
+          <h3>Literature on Sample Complexity of Mixtures</h3>
+          <small><ul>
+						<li class="fragment"> Mixtures of Gaussians: $\Omega(exp(k))$
+            <ul>
+              <li class="fragment">
+                Moitra and Valiant. "Settling the polynomial learnability of mixtures of gaussians." (FOCS 2010).
+              </li>
+            </ul>
+            </li>
+            <li class="fragment">Mixtures of Discrete Variables: $\Omega(exp(k))$
+              <ul>
+                <li class="fragment">
+                  Rabani, Schulman, and Swamy. "Learning mixtures of arbitrary distributions over large discrete domains." (ITCS 2014).
+                </li>
+              </ul>
+            </li>
+						<li class="fragment">Mixture of Products: $O(exp(k^2 \log(k))) \rightarrow O(exp(k \log(k)))$
+              <ul>
+                <li class="fragment">
+                <b>Mazaheri</b> et. al. "Source Identification for Mixtures of Product Distributions." (COLT 2021).
+                </li>
+                <li class="fragment">
+                  <b>Mazaheri</b> et. al. "Identification of Mixtures of Discrete Product Distributions in Near-Optimal Sample and Time Complexity" (Hopefully COLT 2024)
+                </li>
+              </ul>
+            </li>
+					</ul></small>
+          </section>
+        </section>
+        <section class="fv-background" fv-video="animations/videos/KvsData.mp4" fv-playback-info="animations/videos/KvsData.json"></section>
+        <section class="fv-background" fv-video="animations/videos/SkippingSteps.mp4" fv-playback-info="animations/videos/SkippingSteps.json"></section>
+        <section>
+          <h3>Continueing Application-Driven Theory</h3>
+        </section>
+        <section>
+          <h3>Batch Effects</h3>
+          <img class="r-stretch" src="/images/BatchEffects.png" >
+        </section>
+        <section class="fv-background" fv-video="animations/videos/BatchEffectsGraph.mp4" fv-playback-info="animations/videos/BatchEffectsGraph.json"></section>
+        <section>
+          <h3>Spacial Transcriptomics</h3>
+          <img class="r-stretch" src="/images/SpacialTranscriptomics.jpeg" >
+          <p><small>(Pulled from Dartmouth CQB)</small></p>
+        </section>
+        <section class="fv-background" fv-video="animations/videos/SpacialTranscriptGraph.mp4" fv-playback-info="animations/videos/SpacialTranscriptGraph.json"></section>
+        <section class="fv-background" fv-video="animations/videos/InformationEngineering.mp4" fv-playback-info="animations/videos/InformationEngineering.json"></section>
+        <section class="fv-background" fv-video="animations/videos/InformationEngineering.mp4" fv-playback-info="animations/videos/InformationEngineering.json"></section>
+        <section class="fv-background" fv-video="animations/videos/EndCausalityDiagram.mp4" fv-playback-info="animations/videos/EndCausalityDiagram.json"></section>
+        <section>
+          <h3>Thanks!</h3>
+        </section>
+      </div>
+    </div>
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/manim/manim.js"></script>
+    <script src="plugin/math/math.js"></script>
+    <script>
+      Reveal.initialize({
+          hash: true,
+          autoPlayMedia: false,
+          plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealManim, RevealMath.KaTeX ]
+      });
+    </script>
+  </body>
+</html>
