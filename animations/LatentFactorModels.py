@@ -12,17 +12,39 @@ class LatentFactorModels(PresentationScene):
         title = Text("Latent Heterogeneity").to_edge(UP, buff=.5)
         self.add(title)
 
-        LFMs = VGroup(Text("Principal Component Analysis").scale(.7), Text("Clustering").scale(.7), Text("Mixture Models").scale(.7)).arrange(RIGHT, buff = 1.5)
-        Allman = Text('Allman, et al. "Identifiability of parameters in structure models with many observed variables." 2009.', font_size=28)
-        Anandkumar = Text('Anandkumar, et al. "Tensor decompositions for learning latent variable models." 2014.', font_size=28)
-        Blessing = Text('Wang and Blei. "The Blessing of Multiple Causes." 2019.', font_size=28)
-        Ogburn = Text('Ogburn, et. al. "Comment on the blessing of multiple causes." 2019.', font_size=28)
-        citations = VGroup(LFMs, Blessing, Ogburn)
-        citations.arrange(DOWN, center=False, aligned_edge=LEFT)
-        citations.scale(.7).next_to(title, DOWN)
-        for cit in citations:
-            self.play(Create(cit), runtime = .5)
+        pca = Text("Principal Component Analysis").scale(.5)
+        pca_cite = Paragraph('Pearson, K. (1901). "On Lines and Planes of Closest Fit to Systems of Points in Space". Philosophical Magazine. 2 (11): 559–572.').scale(.25)
+        pca_group = VGroup(pca, pca_cite).arrange(DOWN)
+        
+        clustering = Text("Clustering").scale(.5)
+        clustering_cite = Paragraph('Steinhaus, Hugo (1957). "Sur la division des corps matériels en parties". Bull. Acad. Polon. Sci. (in French). 4 (12): 801–804.').scale(.25)
+        clust_group = VGroup(clustering, clustering_cite).arrange(DOWN)
+
+        moments = Text("Method of Moments").scale(.5)
+        moments_cite = Paragraph('Pearson, K. (1936), "Method of Moments and Method of Maximum Likelihood", Biometrika 28(1/2), 35–59.').scale(.25)
+        moment_group = VGroup(moments, moments_cite).arrange(DOWN)
+
+        tensors = Text("Tensor Methods").scale(.5)
+        TensorCite1 = VGroup(Paragraph('Allman, et al. "Identifiability of parameters in structure models with many observed variables." 2009.').scale(.25),
+                            Paragraph('Anandkumar, et al. "Tensor decompositions for learning latent variable models." 2014.').scale(.25)).arrange(DOWN)
+        tensor_group = VGroup(tensors, TensorCite1).arrange(DOWN)
+
+        background = VGroup(pca_group, clust_group, moment_group, tensor_group).arrange(DOWN).next_to(title, DOWN, buff = 1)
+        for b in background:
+            self.play(Write(b[0]), FadeIn(b[1]))
             self.end_fragment()
+
+        self.play(FadeOut(background))
+        
+        # Erase and restart
+        deconfounding = Text("Deconfounding").scale(.5)
+        Blessing = Paragraph('Wang and Blei. "The Blessing of Multiple Causes." 2019.').scale(.25)
+        Ogburn = Paragraph('Ogburn, et. al. "Comment on the blessing of multiple causes." 2019.').scale(.25)
+        deconf = VGroup(deconfounding, Blessing, Ogburn).arrange(DOWN).next_to(title, DOWN, buff = 1)
+        self.play(Write(deconfounding), FadeIn(Blessing))
+        self.end_fragment()
+        self.play(FadeIn(Ogburn))
+        self.end_fragment()
 
 
         Results = Ellipse(width = 2, height = 3, color=WHITE).move_to(5 * LEFT)
@@ -75,7 +97,7 @@ class LatentFactorModels(PresentationScene):
         self.play(*[MoveToTarget(t) for t in [Stat1, Stat2]], runtime = 1)
         self.end_fragment()
 
-        self.play(FadeOut(citations))
+        self.play(FadeOut(deconf))
         whole_diagram.generate_target()
         whole_diagram.target.next_to(title, .5 * DOWN)
         self.play(MoveToTarget(whole_diagram))
