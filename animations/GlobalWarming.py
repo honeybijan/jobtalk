@@ -34,9 +34,8 @@ class GlobalWarming(PresentationScene):
             dots.append(VGroup(temp_dot, co2_dot))
         self.add_foreground_mobject(real_data_ax)
         self.add(time_label, citation)
-        co2_label = Tex(r"$CO_2$ in PPM (from avg)", color=BLUE).scale(.5).next_to(co2_dot, UP).shift(.5, RIGHT)
+        co2_label = Tex(r"$\text{CO}_2$ in PPM (from avg)", color=BLUE).scale(.5).next_to(co2_dot, UP).shift(.5, RIGHT)
         temp_label = Text(u'Temperature \N{DEGREE SIGN}C (from avg)', color=RED).scale(.5).next_to(temp_dot, DOWN).shift(.5, RIGHT + DOWN)
-        self.end_fragment()
 
         self.play(LaggedStart(*[Create(dot) for dot in dots], lag_ratio=.05))
         self.play(Write(co2_label), Write(temp_label), runtime=.5)
@@ -63,11 +62,11 @@ class GlobalWarming(PresentationScene):
 
         # Animate the creation of Axes
         left_ax = Axes(x_range=[-5, 100, 10], y_range=[-5, 100, 10], x_length=12, y_length=10).scale(.4).to_edge(LEFT, buff = 1)
-        year_label = Text("Time").scale(.5).next_to(left_ax, DOWN, buff = .25)
+        year_label = Tex("Time").scale(.5).next_to(left_ax, DOWN, buff = .25)
 
         right_ax = Axes(x_range=[-5, 100, 10], y_range=[-5, 100, 10], x_length=12, y_length=10).scale(.4).to_edge(RIGHT, buff = 1)
-        temp_label = Text("Temperature").scale(.5).rotate(math.pi/2).next_to(right_ax, LEFT, buff = .25)
-        CO2_label = Text("CO2").scale(.5).next_to(right_ax, DOWN, buff = .25)
+        temp_label = Tex("Temperature").scale(.5).rotate(math.pi/2).next_to(right_ax, LEFT, buff = .25)
+        CO2_label = MathTex(r"\text{CO}_2").scale(.5).next_to(right_ax, DOWN, buff = .25)
 
         labels = VGroup(year_label, temp_label, CO2_label)
         self.play(Write(left_ax), Write(labels), Write(right_ax))
@@ -84,3 +83,13 @@ class GlobalWarming(PresentationScene):
         self.play(LaggedStart(*[Create(partial_dot) for partial_dot in partial_dots], lag_ratio=.05))
         self.end_fragment()
         self.play(LaggedStart(*[Create(full_dot) for full_dot in full_dots], lag_ratio=.05))
+        self.end_fragment()
+        
+        both_graphs = VGroup(*full_dots, *partial_dots, right_ax, left_ax, temp_label, CO2_label, year_label)
+        both_graphs.generate_target()
+        both_graphs.target.scale(.8).next_to(title, DOWN, buff=.5)
+        simpson=Text("Simpson's Paradox").scale(.5).next_to(both_graphs, DOWN, buff=.2).shift(.75 * UP)
+        simpson_cite = Paragraph('Simpson, Edward H. (1951). "The Interpretation of Interaction in Contingency Tables".\n\tJournal of the Royal Statistical Society, Series B. 13: 238–241', alignment=True).scale(.25).next_to(simpson, DOWN)
+        self.play(MoveToTarget(both_graphs))
+        self.play(Write(simpson), FadeIn(simpson_cite))
+        self.end_fragment()

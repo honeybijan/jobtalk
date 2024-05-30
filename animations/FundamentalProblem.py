@@ -14,7 +14,6 @@ class FundamentalProblem(PresentationScene):
 
         person_factual = StickFigure().to_edge(LEFT, buff=2).shift(.5 * DOWN)
         self.add(person_factual.body)
-        self.end_fragment()
 
         person_treated = StickFigure(happy=True).to_edge(RIGHT, buff=6).shift(UP)
 
@@ -44,19 +43,21 @@ class FundamentalProblem(PresentationScene):
         # Cant see both
         top = VGroup(po1, treatment_arrow, person_treated, te[2])
         bot = VGroup(po0, untreatment_arrow, person_untreated, te[4])
-        top.generate_target()
-        top.target.set_opacity(.3)
-        self.play(MoveToTarget(top), runtime = .5)
-        self.wait(1)
-        top.generate_target()
-        top.target.set_opacity(1)
         bot.generate_target()
         bot.target.set_opacity(.3)
-        self.play(MoveToTarget(top), MoveToTarget(bot), runtime =.5)
-        self.wait()
+        self.play(MoveToTarget(bot), runtime = .5)
+        self.end_fragment()
+
+        top.generate_target()
+        top.target.set_opacity(.3)
         bot.generate_target()
         bot.target.set_opacity(1)
-        self.play(MoveToTarget(bot), runtime = .5)
+        self.play(MoveToTarget(top), MoveToTarget(bot), runtime =.5)
+        self.end_fragment()
+
+        top.generate_target()
+        top.target.set_opacity(1)
+        self.play(MoveToTarget(top), runtime = .5)
         self.end_fragment()
 
 
@@ -93,8 +94,6 @@ class FundamentalProblem(PresentationScene):
                    *[FadeIn(stick.body) for stick in group_of_sticks], 
                    *[FadeIn(stick.body) for stick in group_of_sticks2], 
                    FadeIn(group_of_sticks_treated), FadeIn(group_of_sticks_untreated))
-        self.end_fragment()
-
         ate = MathTex(r"{{\text{Avg Treatment Effect}}}", r"=", r"\mathbb{E}[{{Y^{(1)}}}]", r"-", r"\mathbb{E}[{{Y^{(0)}}}]").to_edge(RIGHT, buff=1).scale(.7).move_to(te)
         self.play(TransformMatchingTex(te, ate))
         self.end_fragment()

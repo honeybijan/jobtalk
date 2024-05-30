@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ManimReveal</title>
+    <title>Latent Heterogeneity in Data</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="dist/reset.css">
@@ -15,98 +15,353 @@
         <section>
           <h3>Latency and Heterogeneity in Data</h3>
           <h4>...and what to do about it</h4>
-          <h6>Bijan Mazaheri</h6>
+          <br>
+          <p>Bijan Mazaheri</p>
+          <p>Eric and Wendy Schmidt Center</p>
+          <p>Broad Institute of MIT and Harvard</p>
         </section>
+
         <section>
-          <h3>Causality</h3>
-          <ul>
-            <li class="fragment">
-              What to do?
-            </li>
-            <li class="fragment">
-              What to blame?
-            </li>
-          </ul>
+          <section id = "fragments" data-auto-animate>
+            <h3>Overview</h3>
+            <ol>
+              <li class="fragment fade-in" style="color:rgba(135, 206, 235, 1)"><a href="#/1/1" style="color:rgba(135, 206, 235, 1)">Heterogeneous Data</a></li>
+              <li class="fragment fade-in" style="color:rgba(135, 206, 235, 1)"><a href="#/6/1" style="color:rgba(135, 206, 235, 1)">Causality</a></li>
+              <li class="fragment fade-in" style="color:rgba(135, 235, 135, 1)"><a href="#/10/1" style="color:rgba(135, 235, 135, 1)">Causal Inference</a></li>
+              <li class="fragment fade-in" style="color:rgba(135, 235, 135, 1)"><a href="#/12/1" style="color:rgba(135, 235, 135, 1)">Deconfounding Unobserved Heterogeneity</a></li>
+              <ul>
+                <li class="fragment fade-in" style="color:rgba(230, 235, 135, 1)"><a href="#/14/1" style="color:rgba(230, 235, 135, 1)">Synthetic Potential Outcomes</a></li>
+                <li class="fragment fade-in" style="color:rgba(230, 235, 135, 1)"><a href="#/16/1" style="color:rgba(230, 235, 135, 1)">Mixtures of Treatment Effects</a></li>
+              </ul>
+              <li class="fragment fade-in" style="color:rgba(235, 187, 135, 1)"><a href="#/20/1" style="color:rgba(235, 187, 135, 1)">Robustness to Observed Heterogeneity</a> </li>
+              <li class="fragment fade-in" style="color:rgba(235, 187, 135, 1)"><a href="#/23/1" style="color:rgba(235, 187, 135, 1)">Problem of Latency</a></li>
+              <li class="fragment fade-in" style="color:rgba(235, 135, 135, 1)"><a href="#/26" style="color:rgba(235, 135, 135, 1)">The Age of Models</a></li>
+            </ol>
+          </section>
+          <section data-auto-animate>
+            <h3>Overview</h3>
+            <ol>
+              <li style="color:rgba(135, 206, 235, 1)"><a href="#/1/1" style="color:rgba(135, 206, 235, 1)">Heterogeneous Data</a></li>
+              <li style="color:rgba(135, 206, 235, .5)"><a href="#/6/1" style="color:rgba(135, 206, 235, .5)">Causality</a></li>
+              <li style="color:rgba(135, 235, 135, .5)"><a href="#/10/1" style="color:rgba(135, 235, 135, .5)">Causal Inference</a></li>
+              <li style="color:rgba(135, 235, 135, .5)"><a href="#/12/1" style="color:rgba(135, 235, 135, .5)">Deconfounding Unobserved Heterogeneity</a></li>
+              <ul>
+                <li style="color:rgba(230, 235, 135, .5)"><a href="#/14/1" style="color:rgba(230, 235, 135, .5)">Synthetic Potential Outcomes</a></li>
+                <li style="color:rgba(230, 235, 135, .5)"><a href="#/16/1" style="color:rgba(230, 235, 135, .5)">Mixtures of Treatment Effects</a></li>
+              </ul>
+              <li style="color:rgba(235, 187, 135, .5)"><a href="#/20/1" style="color:rgba(235, 187, 135, .5)">Robustness to Observed Heterogeneity</a> </li>
+              <li style="color:rgba(235, 187, 135, .5)"><a href="#/23/1" style="color:rgba(235, 187, 135, .5)">Problem of Latency</a></li>
+              <li style="color:rgba(235, 135, 135, .5)"><a href="#/26" style="color:rgba(235, 135, 135, .5)">The Age of Models</a></li>
+            </ol>
+          </section>
         </section>
-        <section>
-          <h3>Show direction of arrow talk about why</h3>
-        </section>
+
         <section>
           <h3>The Age of Big Data</h3>
           <img class="r-stretch" src="/images/XKCD_ML.png" >
+          <p style="font-size:18px">https://xkcd.com/1838/</p>
+        </section>
+        <section id = "fragments">
+          <h3>How do we make data bigger?</h3>
+          <ol>
+            <li class="fragment fade-in">Combine batches of data from different places</li>
+            <li class="fragment fade-in">Expand into diverse populations</li>
+            <li class="fragment fade-in">Longer collection times</li>
+          </ol>
         </section>
         <section>
           <h3>An Example</h3>
           <img class="r-stretch" src="/images/2021CO2Peak_Temps_en_title_lg.jpg" >
         </section>
         <section class="fv-background" fv-video="animations/videos/GlobalWarming.mp4" fv-playback-info="animations/videos/GlobalWarming.json"></section>
-        <section class="fv-background" fv-video="animations/videos/GlobalWarmingDAG.mp4" fv-playback-info="animations/videos/GlobalWarmingDAG.json"></section>
-        <section class="fv-background" fv-video="animations/videos/FundamentalProblem.mp4" fv-playback-info="animations/videos/FundamentalProblem.json"></section>
-
-        <section class="fv-background" fv-video="animations/videos/CausalityTable.mp4" fv-playback-info="animations/videos/CausalityTable.json"></section>
-        <section class="fv-background" fv-video="animations/videos/UnobservedConfounding.mp4" fv-playback-info="animations/videos/UnobservedConfounding.json"></section>
-        <section class="fv-background" fv-video="animations/videos/WhatIsIdentifiability.mp4" fv-playback-info="animations/videos/WhatIsIdentifiability.json"></section>
+        
         <section>
-          <h3>Motivating Theory: Past Work</h3>
-        </section>
-        <section class="fv-background" fv-video="animations/videos/Bumps.mp4" fv-playback-info="animations/videos/Bumps.json"></section>
-        <section class="fv-background" fv-video="animations/videos/ICoins.mp4" fv-playback-info="animations/videos/ICoins.json"></section>
-        <section class="fv-background" fv-video="animations/videos/IdentifiabilityReduction.mp4" fv-playback-info="animations/videos/IdentifiabilityReduction.json"></section>
-        <section class="fv-background" fv-video="animations/videos/WhatIsSampleComplexity.mp4" fv-playback-info="animations/videos/WhatIsSampleComplexity.json"></section>
-        <section class="fv-background" fv-video="animations/videos/EmergenceOfConfounding.mp4" fv-playback-info="animations/videos/EmergenceOfConfounding.json"></section>
-        <section>
-          <section id="fragments">
-          <h3>Literature on Sample Complexity of Mixtures</h3>
-          <small><ul>
-						<li class="fragment"> Mixtures of Gaussians: $\Omega(exp(k))$
-            <ul>
-              <li class="fragment">
-                Moitra and Valiant. "Settling the polynomial learnability of mixtures of gaussians." (FOCS 2010).
-              </li>
-            </ul>
-            </li>
-            <li class="fragment">Mixtures of Discrete Variables: $\Omega(exp(k))$
+          <section data-auto-animate>
+            <h3>Overview</h3>
+            <ol>
+              <li style="color:rgba(135, 206, 235, 1)"><a href="#/1/1" style="color:rgba(135, 206, 235, 1)">Heterogeneous Data</a></li>
+              <li style="color:rgba(135, 206, 235, .5)"><a href="#/6/1" style="color:rgba(135, 206, 235, .5)">Causality</a></li>
+              <li style="color:rgba(135, 235, 135, .5)"><a href="#/10/1" style="color:rgba(135, 235, 135, .5)">Causal Inference</a></li>
+              <li style="color:rgba(135, 235, 135, .5)"><a href="#/12/1" style="color:rgba(135, 235, 135, .5)">Deconfounding Unobserved Heterogeneity</a></li>
               <ul>
-                <li class="fragment">
-                  Rabani, Schulman, and Swamy. "Learning mixtures of arbitrary distributions over large discrete domains." (ITCS 2014).
-                </li>
+                <li style="color:rgba(230, 235, 135, .5)"><a href="#/14/1" style="color:rgba(230, 235, 135, .5)">Synthetic Potential Outcomes</a></li>
+                <li style="color:rgba(230, 235, 135, .5)"><a href="#/16/1" style="color:rgba(230, 235, 135, .5)">Mixtures of Treatment Effects</a></li>
               </ul>
-            </li>
-						<li class="fragment">Mixture of Products: $O(exp(k^2 \log(k))) \rightarrow O(exp(k \log(k)))$
+              <li style="color:rgba(235, 187, 135, .5)"><a href="#/20/1" style="color:rgba(235, 187, 135, .5)">Robustness to Observed Heterogeneity</a> </li>
+              <li style="color:rgba(235, 187, 135, .5)"><a href="#/23/1" style="color:rgba(235, 187, 135, .5)">Problem of Latency</a></li>
+              <li style="color:rgba(235, 135, 135, .5)"><a href="#/26" style="color:rgba(235, 135, 135, .5)">The Age of Models</a></li>
+            </ol>
+          </section>
+          <section data-auto-animate>
+            <h3>Overview</h3>
+            <ol>
+              <li style="color:rgba(135, 206, 235, .5)"><a href="#/1/1" style="color:rgba(135, 206, 235, .5)">Heterogeneous Data</a></li>
+              <li style="color:rgba(135, 206, 235, 1)"><a href="#/6/1" style="color:rgba(135, 206, 235, 1)">Causality</a></li>
+              <li style="color:rgba(135, 235, 135, .5)"><a href="#/10/1" style="color:rgba(135, 235, 135, .5)">Causal Inference</a></li>
+              <li style="color:rgba(135, 235, 135, .5)"><a href="#/12/1" style="color:rgba(135, 235, 135, .5)">Deconfounding Unobserved Heterogeneity</a></li>
               <ul>
-                <li class="fragment">
-                <b>Mazaheri</b> et. al. "Source Identification for Mixtures of Product Distributions." (COLT 2021).
-                </li>
-                <li class="fragment">
-                  <b>Mazaheri</b> et. al. "Identification of Mixtures of Discrete Product Distributions in Near-Optimal Sample and Time Complexity" (Hopefully COLT 2024)
-                </li>
+                <li style="color:rgba(230, 235, 135, .5)"><a href="#/14/1" style="color:rgba(230, 235, 135, .5)">Synthetic Potential Outcomes</a></li>
+                <li style="color:rgba(230, 235, 135, .5)"><a href="#/16/1" style="color:rgba(230, 235, 135, .5)">Mixtures of Treatment Effects</a></li>
               </ul>
-            </li>
-					</ul></small>
+              <li style="color:rgba(235, 187, 135, .5)"><a href="#/20/1" style="color:rgba(235, 187, 135, .5)">Robustness to Observed Heterogeneity</a> </li>
+              <li style="color:rgba(235, 187, 135, .5)"><a href="#/23/1" style="color:rgba(235, 187, 135, .5)">Problem of Latency</a></li>
+              <li style="color:rgba(235, 135, 135, .5)"><a href="#/26" style="color:rgba(235, 135, 135, .5)">The Age of Models</a></li>
+            </ol>
           </section>
         </section>
-        <section class="fv-background" fv-video="animations/videos/KvsData.mp4" fv-playback-info="animations/videos/KvsData.json"></section>
-        <section class="fv-background" fv-video="animations/videos/SkippingSteps.mp4" fv-playback-info="animations/videos/SkippingSteps.json"></section>
+        
+        <section class="fv-background" fv-video="animations/videos/WhyCausality.mp4" fv-playback-info="animations/videos/WhyCausality.json"></section>
+        <section class="fv-background" fv-video="animations/videos/FundamentalProblem.mp4" fv-playback-info="animations/videos/FundamentalProblem.json"></section>
+        <section class="fv-background" fv-video="animations/videos/CausalModels.mp4" fv-playback-info="animations/videos/CausalModels.json"></section>
+        
         <section>
-          <h3>Continueing Application-Driven Theory</h3>
+          <section data-auto-animate>
+            <h3>Overview</h3>
+            <ol>
+              <li style="color:rgba(135, 206, 235, .5)"><a href="#/1/1" style="color:rgba(135, 206, 235, .5)">Heterogeneous Data</a></li>
+              <li style="color:rgba(135, 206, 235, 1)"><a href="#/6/1" style="color:rgba(135, 206, 235, 1)">Causality</a></li>
+              <li style="color:rgba(135, 235, 135, .5)"><a href="#/10/1" style="color:rgba(135, 235, 135, .5)">Causal Inference</a></li>
+              <li style="color:rgba(135, 235, 135, .5)"><a href="#/12/1" style="color:rgba(135, 235, 135, .5)">Deconfounding Unobserved Heterogeneity</a></li>
+              <ul>
+                <li style="color:rgba(230, 235, 135, .5)"><a href="#/14/1" style="color:rgba(230, 235, 135, .5)">Synthetic Potential Outcomes</a></li>
+                <li style="color:rgba(230, 235, 135, .5)"><a href="#/16/1" style="color:rgba(230, 235, 135, .5)">Mixtures of Treatment Effects</a></li>
+              </ul>
+              <li style="color:rgba(235, 187, 135, .5)"><a href="#/20/1" style="color:rgba(235, 187, 135, .5)">Robustness to Observed Heterogeneity</a> </li>
+              <li style="color:rgba(235, 187, 135, .5)"><a href="#/23/1" style="color:rgba(235, 187, 135, .5)">Problem of Latency</a></li>
+              <li style="color:rgba(235, 135, 135, .5)"><a href="#/26" style="color:rgba(235, 135, 135, .5)">The Age of Models</a></li>
+            </ol>
+          </section>
+          <section data-auto-animate>
+            <h3>Overview</h3>
+            <ol>
+              <li style="color:rgba(135, 206, 235, .5)"><a href="#/1/1" style="color:rgba(135, 206, 235, .5)">Heterogeneous Data</a></li>
+              <li style="color:rgba(135, 206, 235, .5)"><a href="#/6/1" style="color:rgba(135, 206, 235, .5)">Causality</a></li>
+              <li style="color:rgba(135, 235, 135, 1)"><a href="#/10/1" style="color:rgba(135, 235, 135, 1)">Causal Inference</a></li>
+              <li style="color:rgba(135, 235, 135, .5)"><a href="#/12/1" style="color:rgba(135, 235, 135, .5)">Deconfounding Unobserved Heterogeneity</a></li>
+              <ul>
+                <li style="color:rgba(230, 235, 135, .5)"><a href="#/14/1" style="color:rgba(230, 235, 135, .5)">Synthetic Potential Outcomes</a></li>
+                <li style="color:rgba(230, 235, 135, .5)"><a href="#/16/1" style="color:rgba(230, 235, 135, .5)">Mixtures of Treatment Effects</a></li>
+              </ul>
+              <li style="color:rgba(235, 187, 135, .5)"><a href="#/20/1" style="color:rgba(235, 187, 135, .5)">Robustness to Observed Heterogeneity</a> </li>
+              <li style="color:rgba(235, 187, 135, .5)"><a href="#/23/1" style="color:rgba(235, 187, 135, .5)">Problem of Latency</a></li>
+              <li style="color:rgba(235, 135, 135, .5)"><a href="#/26" style="color:rgba(235, 135, 135, .5)">The Age of Models</a></li>
+            </ol>
+          </section>
         </section>
+        
+        <section class="fv-background" fv-video="animations/videos/ApproachesToCausality.mp4" fv-playback-info="animations/videos/ApproachesToCausality.json"></section>
+        
+        <section>
+          <section data-auto-animate>
+            <h3>Overview</h3>
+            <ol>
+              <li style="color:rgba(135, 206, 235, .5)"><a href="#/1/1" style="color:rgba(135, 206, 235, .5)">Heterogeneous Data</a></li>
+              <li style="color:rgba(135, 206, 235, .5)"><a href="#/6/1" style="color:rgba(135, 206, 235, .5)">Causality</a></li>
+              <li style="color:rgba(135, 235, 135, 1)"><a href="#/10/1" style="color:rgba(135, 235, 135, 1)">Causal Inference</a></li>
+              <li style="color:rgba(135, 235, 135, .5)"><a href="#/12/1" style="color:rgba(135, 235, 135, .5)">Deconfounding Unobserved Heterogeneity</a></li>
+              <ul>
+                <li style="color:rgba(230, 235, 135, .5)"><a href="#/14/1" style="color:rgba(230, 235, 135, .5)">Synthetic Potential Outcomes</a></li>
+                <li style="color:rgba(230, 235, 135, .5)"><a href="#/16/1" style="color:rgba(230, 235, 135, .5)">Mixtures of Treatment Effects</a></li>
+              </ul>
+              <li style="color:rgba(235, 187, 135, .5)"><a href="#/20/1" style="color:rgba(235, 187, 135, .5)">Robustness to Observed Heterogeneity</a> </li>
+              <li style="color:rgba(235, 187, 135, .5)"><a href="#/23/1" style="color:rgba(235, 187, 135, .5)">Problem of Latency</a></li>
+              <li style="color:rgba(235, 135, 135, .5)"><a href="#/26" style="color:rgba(235, 135, 135, .5)">The Age of Models</a></li>
+            </ol>
+          </section>
+          <section data-auto-animate>
+            <h3>Overview</h3>
+            <ol>
+              <li style="color:rgba(135, 206, 235, .5)"><a href="#/1/1" style="color:rgba(135, 206, 235, .5)">Heterogeneous Data</a></li>
+              <li style="color:rgba(135, 206, 235, .5)"><a href="#/6/1" style="color:rgba(135, 206, 235, .5)">Causality</a></li>
+              <li style="color:rgba(135, 235, 135, .5)"><a href="#/10/1" style="color:rgba(135, 235, 135, .5)">Causal Inference</a></li>
+              <li style="color:rgba(135, 235, 135, 1)"><a href="#/12/1" style="color:rgba(135, 235, 135, 1)">Deconfounding Unobserved Heterogeneity</a></li>
+              <ul>
+                <li style="color:rgba(230, 235, 135, .5)"><a href="#/14/1" style="color:rgba(230, 235, 135, .5)">Synthetic Potential Outcomes</a></li>
+                <li style="color:rgba(230, 235, 135, .5)"><a href="#/16/1" style="color:rgba(230, 235, 135, .5)">Mixtures of Treatment Effects</a></li>
+              </ul>
+              <li style="color:rgba(235, 187, 135, .5)"><a href="#/20/1" style="color:rgba(235, 187, 135, .5)">Robustness to Observed Heterogeneity</a> </li>
+              <li style="color:rgba(235, 187, 135, .5)"><a href="#/23/1" style="color:rgba(235, 187, 135, .5)">Problem of Latency</a></li>
+              <li style="color:rgba(235, 135, 135, .5)"><a href="#/26" style="color:rgba(235, 135, 135, .5)">The Age of Models</a></li>
+            </ol>
+          </section>
+        </section>
+        
+        <section class="fv-background" fv-video="animations/videos/LatentFactorModels.mp4" fv-playback-info="animations/videos/LatentFactorModels.json"></section>
+        
+        <section>
+          <section data-auto-animate>
+            <h3>Overview</h3>
+            <ol>
+              <li style="color:rgba(135, 206, 235, .5)"><a href="#/1/1" style="color:rgba(135, 206, 235, .5)">Heterogeneous Data</a></li>
+              <li style="color:rgba(135, 206, 235, .5)"><a href="#/6/1" style="color:rgba(135, 206, 235, .5)">Causality</a></li>
+              <li style="color:rgba(135, 235, 135, .5)"><a href="#/10/1" style="color:rgba(135, 235, 135, .5)">Causal Inference</a></li>
+              <li style="color:rgba(135, 235, 135, 1)"><a href="#/12/1" style="color:rgba(135, 235, 135, 1)">Deconfounding Unobserved Heterogeneity</a></li>
+              <ul>
+                <li style="color:rgba(230, 235, 135, .5)"><a href="#/14/1" style="color:rgba(230, 235, 135, .5)">Synthetic Potential Outcomes</a></li>
+                <li style="color:rgba(230, 235, 135, .5)"><a href="#/16/1" style="color:rgba(230, 235, 135, .5)">Mixtures of Treatment Effects</a></li>
+              </ul>
+              <li style="color:rgba(235, 187, 135, .5)"><a href="#/20/1" style="color:rgba(235, 187, 135, .5)">Robustness to Observed Heterogeneity</a> </li>
+              <li style="color:rgba(235, 187, 135, .5)"><a href="#/23/1" style="color:rgba(235, 187, 135, .5)">Problem of Latency</a></li>
+              <li style="color:rgba(235, 135, 135, .5)"><a href="#/26" style="color:rgba(235, 135, 135, .5)">The Age of Models</a></li>
+            </ol>
+          </section>
+          <section data-auto-animate>
+            <h3>Overview</h3>
+            <ol>
+              <li style="color:rgba(135, 206, 235, .5)"><a href="#/1/1" style="color:rgba(135, 206, 235, .5)">Heterogeneous Data</a></li>
+              <li style="color:rgba(135, 206, 235, .5)"><a href="#/6/1" style="color:rgba(135, 206, 235, .5)">Causality</a></li>
+              <li style="color:rgba(135, 235, 135, .5)"><a href="#/10/1" style="color:rgba(135, 235, 135, .5)">Causal Inference</a></li>
+              <li style="color:rgba(135, 235, 135, 1)"><a href="#/12/1" style="color:rgba(135, 235, 135, 1)">Deconfounding Unobserved Heterogeneity</a></li>
+              <ul>
+                <li style="color:rgba(230, 235, 135, 1)"><a href="#/14/1" style="color:rgba(230, 235, 135, 1)">Synthetic Potential Outcomes</a></li>
+                <li style="color:rgba(230, 235, 135, .5)"><a href="#/16/1" style="color:rgba(230, 235, 135, .5)">Mixtures of Treatment Effects</a></li>
+              </ul>
+              <li style="color:rgba(235, 187, 135, .5)"><a href="#/20/1" style="color:rgba(235, 187, 135, .5)">Robustness to Observed Heterogeneity</a> </li>
+              <li style="color:rgba(235, 187, 135, .5)"><a href="#/23/1" style="color:rgba(235, 187, 135, .5)">Problem of Latency</a></li>
+              <li style="color:rgba(235, 135, 135, .5)"><a href="#/26" style="color:rgba(235, 135, 135, .5)">The Age of Models</a></li>
+            </ol>
+          </section>
+        </section>
+        
+        <section class="fv-background" fv-video="animations/videos/SPOsSingle.mp4" fv-playback-info="animations/videos/SPOsSingle.json"></section>
+       
+        <section>
+          <section data-auto-animate>
+            <h3>Overview</h3>
+            <ol>
+              <li style="color:rgba(135, 206, 235, .5)"><a href="#/1/1" style="color:rgba(135, 206, 235, .5)">Heterogeneous Data</a></li>
+              <li style="color:rgba(135, 206, 235, .5)"><a href="#/6/1" style="color:rgba(135, 206, 235, .5)">Causality</a></li>
+              <li style="color:rgba(135, 235, 135, .5)"><a href="#/10/1" style="color:rgba(135, 235, 135, .5)">Causal Inference</a></li>
+              <li style="color:rgba(135, 235, 135, 1)"><a href="#/12/1" style="color:rgba(135, 235, 135, 1)">Deconfounding Unobserved Heterogeneity</a></li>
+              <ul>
+                <li style="color:rgba(230, 235, 135, 1)"><a href="#/14/1" style="color:rgba(230, 235, 135, 1)">Synthetic Potential Outcomes</a></li>
+                <li style="color:rgba(230, 235, 135, .5)"><a href="#/16/1" style="color:rgba(230, 235, 135, .5)">Mixtures of Treatment Effects</a></li>
+              </ul>
+              <li style="color:rgba(235, 187, 135, .5)"><a href="#/20/1" style="color:rgba(235, 187, 135, .5)">Robustness to Observed Heterogeneity</a> </li>
+              <li style="color:rgba(235, 187, 135, .5)"><a href="#/23/1" style="color:rgba(235, 187, 135, .5)">Problem of Latency</a></li>
+              <li style="color:rgba(235, 135, 135, .5)"><a href="#/26" style="color:rgba(235, 135, 135, .5)">The Age of Models</a></li>
+            </ol>
+          </section>
+          <section data-auto-animate>
+            <h3>Overview</h3>
+            <ol>
+              <li style="color:rgba(135, 206, 235, .5)"><a href="#/1/1" style="color:rgba(135, 206, 235, .5)">Heterogeneous Data</a></li>
+              <li style="color:rgba(135, 206, 235, .5)"><a href="#/6/1" style="color:rgba(135, 206, 235, .5)">Causality</a></li>
+              <li style="color:rgba(135, 235, 135, .5)"><a href="#/10/1" style="color:rgba(135, 235, 135, .5)">Causal Inference</a></li>
+              <li style="color:rgba(135, 235, 135, 1)"><a href="#/12/1" style="color:rgba(135, 235, 135, 1)">Deconfounding Unobserved Heterogeneity</a></li>
+              <ul>
+                <li style="color:rgba(230, 235, 135, .5)"><a href="#/14/1" style="color:rgba(230, 235, 135, .5)">Synthetic Potential Outcomes</a></li>
+                <li style="color:rgba(230, 235, 135, 1)"><a href="#/16/1" style="color:rgba(230, 235, 135, 1)">Mixtures of Treatment Effects</a></li>
+              </ul>
+              <li style="color:rgba(235, 187, 135, .5)"><a href="#/20/1" style="color:rgba(235, 187, 135, .5)">Robustness to Observed Heterogeneity</a> </li>
+              <li style="color:rgba(235, 187, 135, .5)"><a href="#/23/1" style="color:rgba(235, 187, 135, .5)">Problem of Latency</a></li>
+              <li style="color:rgba(235, 135, 135, .5)"><a href="#/26" style="color:rgba(235, 135, 135, .5)">The Age of Models</a></li>
+            </ol>
+          </section>
+        </section>
+        
+        <section class="fv-background" fv-video="animations/videos/CoinsAndPockets.mp4" fv-playback-info="animations/videos/CoinsAndPockets.json"></section>
+        <section class="fv-background" fv-video="animations/videos/SPOsMulti.mp4" fv-playback-info="animations/videos/SPOsMulti.json"></section>
+        <section class="fv-background" fv-video="animations/videos/MathIsBetter.mp4" fv-playback-info="animations/videos/MathIsBetter.json"></section>
+        
+        <section>
+          <section data-auto-animate>
+            <h3>Overview</h3>
+            <ol>
+              <li style="color:rgba(135, 206, 235, .5)"><a href="#/1/1" style="color:rgba(135, 206, 235, .5)">Heterogeneous Data</a></li>
+              <li style="color:rgba(135, 206, 235, .5)"><a href="#/6/1" style="color:rgba(135, 206, 235, .5)">Causality</a></li>
+              <li style="color:rgba(135, 235, 135, .5)"><a href="#/10/1" style="color:rgba(135, 235, 135, .5)">Causal Inference</a></li>
+              <li style="color:rgba(135, 235, 135, 1)"><a href="#/12/1" style="color:rgba(135, 235, 135, 1)">Deconfounding Unobserved Heterogeneity</a></li>
+              <ul>
+                <li style="color:rgba(230, 235, 135, .5)"><a href="#/14/1" style="color:rgba(230, 235, 135, .5)">Synthetic Potential Outcomes</a></li>
+                <li style="color:rgba(230, 235, 135, 1)"><a href="#/16/1" style="color:rgba(230, 235, 135, 1)">Mixtures of Treatment Effects</a></li>
+              </ul>
+              <li style="color:rgba(235, 187, 135, .5)"><a href="#/20/1" style="color:rgba(235, 187, 135, .5)">Robustness to Observed Heterogeneity</a> </li>
+              <li style="color:rgba(235, 187, 135, .5)"><a href="#/23/1" style="color:rgba(235, 187, 135, .5)">Problem of Latency</a></li>
+              <li style="color:rgba(235, 135, 135, .5)"><a href="#/26" style="color:rgba(235, 135, 135, .5)">The Age of Models</a></li>
+            </ol>
+          </section>
+          <section data-auto-animate>
+            <h3>Overview</h3>
+            <ol>
+              <li style="color:rgba(135, 206, 235, .5)"><a href="#/1/1" style="color:rgba(135, 206, 235, .5)">Heterogeneous Data</a></li>
+              <li style="color:rgba(135, 206, 235, .5)"><a href="#/6/1" style="color:rgba(135, 206, 235, .5)">Causality</a></li>
+              <li style="color:rgba(135, 235, 135, .5)"><a href="#/10/1" style="color:rgba(135, 235, 135, .5)">Causal Inference</a></li>
+              <li style="color:rgba(135, 235, 135, .5)"><a href="#/12/1" style="color:rgba(135, 235, 135, .5)">Deconfounding Unobserved Heterogeneity</a></li>
+              <ul>
+                <li style="color:rgba(230, 235, 135, .5)"><a href="#/14/1" style="color:rgba(230, 235, 135, .5)">Synthetic Potential Outcomes</a></li>
+                <li style="color:rgba(230, 235, 135, .5)"><a href="#/16/1" style="color:rgba(230, 235, 135, .5)">Mixtures of Treatment Effects</a></li>
+              </ul>
+              <li style="color:rgba(235, 187, 135, 1)"><a href="#/20/1" style="color:rgba(235, 187, 135, 1)">Robustness to Observed Heterogeneity</a> </li>
+              <li style="color:rgba(235, 187, 135, .5)"><a href="#/23/1" style="color:rgba(235, 187, 135, .5)">Problem of Latency</a></li>
+              <li style="color:rgba(235, 135, 135, .5)"><a href="#/26" style="color:rgba(235, 135, 135, .5)">The Age of Models</a></li>
+            </ol>
+          </section>
+        </section>
+        
         <section>
           <h3>Batch Effects</h3>
           <img class="r-stretch" src="/images/BatchEffects.png" >
+          <p style="font-size:18px">https://www.10xgenomics.com/analysis-guides/introduction-batch-effect-correction</p>
         </section>
         <section class="fv-background" fv-video="animations/videos/BatchEffectsGraph.mp4" fv-playback-info="animations/videos/BatchEffectsGraph.json"></section>
+        
         <section>
-          <h3>Spacial Transcriptomics</h3>
-          <img class="r-stretch" src="/images/SpacialTranscriptomics.jpeg" >
-          <p><small>(Pulled from Dartmouth CQB)</small></p>
+          <section data-auto-animate>
+            <h3>Overview</h3>
+            <ol>
+              <li style="color:rgba(135, 206, 235, .5)"><a href="#/1/1" style="color:rgba(135, 206, 235, .5)">Heterogeneous Data</a></li>
+              <li style="color:rgba(135, 206, 235, .5)"><a href="#/6/1" style="color:rgba(135, 206, 235, .5)">Causality</a></li>
+              <li style="color:rgba(135, 235, 135, .5)"><a href="#/10/1" style="color:rgba(135, 235, 135, .5)">Causal Inference</a></li>
+              <li style="color:rgba(135, 235, 135, .5)"><a href="#/12/1" style="color:rgba(135, 235, 135, .5)">Deconfounding Unobserved Heterogeneity</a></li>
+              <ul>
+                <li style="color:rgba(230, 235, 135, .5)"><a href="#/14/1" style="color:rgba(230, 235, 135, .5)">Synthetic Potential Outcomes</a></li>
+                <li style="color:rgba(230, 235, 135, .5)"><a href="#/16/1" style="color:rgba(230, 235, 135, .5)">Mixtures of Treatment Effects</a></li>
+              </ul>
+              <li style="color:rgba(235, 187, 135, 1)"><a href="#/20/1" style="color:rgba(235, 187, 135, 1)">Robustness to Observed Heterogeneity</a> </li>
+              <li style="color:rgba(235, 187, 135, .5)"><a href="#/23/1" style="color:rgba(235, 187, 135, .5)">Problem of Latency</a></li>
+              <li style="color:rgba(235, 135, 135, .5)"><a href="#/26" style="color:rgba(235, 135, 135, .5)">The Age of Models</a></li>
+            </ol>
+          </section>
+          <section data-auto-animate>
+            <h3>Overview</h3>
+            <ol>
+              <li style="color:rgba(135, 206, 235, .5)"><a href="#/1/1" style="color:rgba(135, 206, 235, .5)">Heterogeneous Data</a></li>
+              <li style="color:rgba(135, 206, 235, .5)"><a href="#/6/1" style="color:rgba(135, 206, 235, .5)">Causality</a></li>
+              <li style="color:rgba(135, 235, 135, .5)"><a href="#/10/1" style="color:rgba(135, 235, 135, .5)">Causal Inference</a></li>
+              <li style="color:rgba(135, 235, 135, .5)"><a href="#/12/1" style="color:rgba(135, 235, 135, .5)">Deconfounding Unobserved Heterogeneity</a></li>
+              <ul>
+                <li style="color:rgba(230, 235, 135, .5)"><a href="#/14/1" style="color:rgba(230, 235, 135, .5)">Synthetic Potential Outcomes</a></li>
+                <li style="color:rgba(230, 235, 135, .5)"><a href="#/16/1" style="color:rgba(230, 235, 135, .5)">Mixtures of Treatment Effects</a></li>
+              </ul>
+              <li style="color:rgba(235, 187, 135, .5)"><a href="#/20/1" style="color:rgba(235, 187, 135, .5)">Robustness to Observed Heterogeneity</a> </li>
+              <li style="color:rgba(235, 187, 135, 1)"><a href="#/23/1" style="color:rgba(235, 187, 135, 1)">Problem of Latency</a></li>
+              <li style="color:rgba(235, 135, 135, .5)"><a href="#/26" style="color:rgba(235, 135, 135, .5)">The Age of Models</a></li>
+            </ol>
+          </section>
         </section>
-        <section class="fv-background" fv-video="animations/videos/SpacialTranscriptGraph.mp4" fv-playback-info="animations/videos/SpacialTranscriptGraph.json"></section>
+        
+        <section class="fv-background" fv-video="animations/videos/ProblemOfLatency.mp4" fv-playback-info="animations/videos/ProblemOfLatency.json"></section>
         <section class="fv-background" fv-video="animations/videos/InformationEngineering.mp4" fv-playback-info="animations/videos/InformationEngineering.json"></section>
-        <section class="fv-background" fv-video="animations/videos/InformationEngineering.mp4" fv-playback-info="animations/videos/InformationEngineering.json"></section>
-        <section class="fv-background" fv-video="animations/videos/EndCausalityDiagram.mp4" fv-playback-info="animations/videos/EndCausalityDiagram.json"></section>
+        <section class="fv-background" fv-video="animations/videos/NeuralNetworks.mp4" fv-playback-info="animations/videos/NeuralNetworks.json"></section>
+        <section class="fv-background" fv-video="animations/videos/AgeOfModels.mp4" fv-playback-info="animations/videos/AgeOfModels.json"></section>
+        
         <section>
           <h3>Thanks!</h3>
-        </section>
+          <ol>
+            <li style="color:rgba(135, 206, 235, 1)"><a href="#/1/1" style="color:rgba(135, 206, 235, 1)">Heterogeneous Data</a></li>
+            <li style="color:rgba(135, 206, 235, 1)"><a href="#/6/1" style="color:rgba(135, 206, 235, 1)">Causality</a></li>
+            <li style="color:rgba(135, 235, 135, 1)"><a href="#/10/1" style="color:rgba(135, 235, 135, 1)">Causal Inference</a></li>
+            <li style="color:rgba(135, 235, 135, 1)"><a href="#/12/1" style="color:rgba(135, 235, 135, 1)">Deconfounding Unobserved Heterogeneity</a></li>
+            <ul>
+              <li style="color:rgba(230, 235, 135, 1)"><a href="#/14/1" style="color:rgba(230, 235, 135, 1)">Synthetic Potential Outcomes</a></li>
+              <li style="color:rgba(230, 235, 135, 1)"><a href="#/16/1" style="color:rgba(230, 235, 135, 1)">Mixtures of Treatment Effects</a></li>
+            </ul>
+            <li style="color:rgba(235, 187, 135, 1)"><a href="#/20/1" style="color:rgba(235, 187, 135, 1)">Robustness to Observed Heterogeneity</a> </li>
+            <li style="color:rgba(235, 187, 135, 1)"><a href="#/23/1" style="color:rgba(235, 187, 135, 1)">Problem of Latency</a></li>
+            <li style="color:rgba(235, 135, 135, 1)"><a href="#/26" style="color:rgba(235, 135, 135, 1)">The Age of Models</a></li>
+          </ol>
+        </section>  
       </div>
     </div>
     <script src="dist/reveal.js"></script>

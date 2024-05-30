@@ -31,10 +31,12 @@ class UnobservedConfounding(PresentationScene):
         self.play(MoveToTarget(graph))
 
         Allman = Text('Allman, et al. "Identifiability of parameters in structure models with many observed variables." 2009.', font_size=24)
-        Anandkumar = Text('Anandkumar, et al. "Tensor decompositions for learning latent variable models." 2014.', font_size=24).next_to(Allman, DOWN)
-        Blessing = Text('Wang and Blei. "The Blessing of Multiple Causes." 2019.', font_size=24).next_to(Anandkumar, DOWN)
-        Ogburn = Text('Ogburn, et. al. "Comment on the blessing of multiple causes." 2019.', font_size=24).next_to(Blessing, DOWN)
+        Anandkumar = Text('Anandkumar, et al. "Tensor decompositions for learning latent variable models." 2014.', font_size=24)
+        Blessing = Text('Wang and Blei. "The Blessing of Multiple Causes." 2019.', font_size=24)
+        Ogburn = Text('Ogburn, et. al. "Comment on the blessing of multiple causes." 2019.', font_size=24)
         citations = VGroup(Allman, Anandkumar, Blessing, Ogburn)
+        citations.arrange(DOWN, center=False, aligned_edge=LEFT)
+
         for cit in citations:
             self.play(Create(cit), runtime = .5)
             self.end_fragment()

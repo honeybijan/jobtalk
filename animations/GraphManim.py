@@ -47,10 +47,10 @@ class Vertex(VGroup):
     
     def condition(self):
         self.DarkMode.move_to(self.get_center())
-        return Create(self.DarkMode)
+        return FadeIn(self.DarkMode)
     
     def uncondition(self):
-        return Uncreate(self.DarkMode)
+        return FadeOut(self.DarkMode)
     
 class RectVertex(VGroup):
     def __init__(self, label, observed=True, **kwargs):
@@ -115,30 +115,23 @@ class RectEdge(VGroup):
         return [self.Outer_Circle.animate.set_fill_opacity(0), self.Label.animate.set_color(WHITE)]
     
 class Edge(VGroup):
-    def __init__(self, Vertex1, Vertex2, observed=True, label=None, label_loc = UP, curve=None, tip_size = .1, **kwargs):
+    def __init__(self, Vertex1, Vertex2, observed=True, redraw = True, label=None, label_loc = UP, curve=None, tip_size = .1, **kwargs):
         VGroup.__init__(self, **kwargs)
-        radius = Vertex1.get_width() / 2
         if not curve:
-            if observed:
-                Edge_Arrow = Line(start=Vertex1, end=Vertex2, buff=0)
+            if redraw:
+                if observed:
+                    Edge_Arrow = always_redraw(lambda: Line(start=Vertex1, end=Vertex2, buff=0).add_tip(tip_width = tip_size, tip_length = tip_size))
+                else:
+                    Edge_Arrow = always_redraw(lambda: DashedLine(start=Vertex1, end=Vertex2, buff=0).add_tip(tip_width = tip_size, tip_length = tip_size))
             else:
-                Edge_Arrow = DashedLine(start=Vertex1, end=Vertex2, buff=0)
+                if observed:
+                    Edge_Arrow = Line(start=Vertex1, end=Vertex2, buff=0).add_tip(tip_width = tip_size, tip_length = tip_size)
+                else:
+                    Edge_Arrow = DashedLine(start=Vertex1, end=Vertex2, buff=0).add_tip(tip_width = tip_size, tip_length = tip_size)
         else:
-            Edge_Arrow = ArcBetweenPoints(start=Vertex1, end=Vertex2, buff=0, angle=curve)
-        Edge_Arrow.add_tip(tip_width = tip_size, tip_length = tip_size)
+            Edge_Arrow = ArcBetweenPoints(start=Vertex1, end=Vertex2, angle=curve).add_tip(tip_width = tip_size, tip_length = tip_size)
         self.add(Edge_Arrow)
         if label:
             self.Label = MathTex(label, font_size = 18, color=WHITE).next_to(Edge_Arrow, label_loc)
             self.add(self.Label)
     
-    def highlight(self, color):
-        return [self.Label.animate.set_color(color), self.Outer_Circle.animate.set_color(color)]
-    
-    def unhighlight(self):
-        return self.highlight(WHITE)
-    
-    def condition(self):
-        return [self.Outer_Circle.animate.set_fill_opacity(1), self.Label.animate.set_color(BLACK)]
-    
-    def uncondition(self):
-        return [self.Outer_Circle.animate.set_fill_opacity(0), self.Label.animate.set_color(WHITE)]

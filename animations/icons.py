@@ -4,8 +4,9 @@ import random
 class StickFigure(VGroup):
     def __init__(self, happy = True, color=WHITE, **kwargs):
         VGroup.__init__(self, **kwargs)
+        self.color = color
         self.happy = happy
-        self.body = SVGMobject(file_name = "svgs/person.svg", color = color, fill_color = color)
+        self.body = SVGMobject(file_name = "svgs/person.svg", color = self.color, fill_color = color)
         self.add(self.body)
         self.eye1 = Circle(radius=.1, color=BLACK, fill_opacity=1).center().shift(.5 * LEFT)
         self.eye2 = Circle(radius=.1, color=BLACK, fill_opacity=1).center().shift(.5 * RIGHT)
@@ -14,7 +15,12 @@ class StickFigure(VGroup):
             self.mouth.rotate(PI)
         self.head = VGroup(self.eye1, self.eye2, self.mouth).scale(.2).shift(1.3 * UP)
         self.add(self.head)
-    
+
+    def change_color(self, col):
+        self.color = col
+        self.body.set_color(color = col)
+        self.head.set_color(color = BLACK)
+
     # p is prob of same, i.e. p is prob of happy if starting happy
     def fade_in_random_emotion(self, p):
         if (random.random() > p):
